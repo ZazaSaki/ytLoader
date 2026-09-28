@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Downloader</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬇️</text></svg>">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>⬇️ Video Downloader</h1>
+    <span id="conn" class="conn" title="Live connection">●</span>
+  </header>
+
+  <main>
+    <section class="card add">
+      <textarea id="urls" rows="4" placeholder="Paste one or more YouTube links (videos or playlists), one per line…" autofocus></textarea>
+      <div class="row">
+        <label>Format
+          <select id="format"></select>
+        </label>
+        <button id="submit" class="primary">Download</button>
+      </div>
+      <div id="msg" class="msg" hidden></div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>Queue <span id="active-count" class="count"></span></h2>
+      </div>
+      <div id="active" class="list"></div>
+      <p id="active-empty" class="empty">Nothing downloading.</p>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>History <span id="history-count" class="count"></span></h2>
+        <div class="head-actions">
+          <a id="save-all" class="btn primary" href="/api/archive" download>⬇ Download all</a>
+          <button id="clear" class="ghost">Clear history</button>
+        </div>
+      </div>
+      <div id="bundles" class="bundles" hidden></div>
+      <div id="history" class="list"></div>
+      <p id="history-empty" class="empty">No downloads yet.</p>
+    </section>
+  </main>
+
+  <template id="job-tpl">
+    <div class="job">
+      <div class="thumb"><img alt=""></div>
+      <div class="body">
+        <div class="title"></div>
+        <div class="meta">
+          <span class="badge status"></span>
+          <span class="badge fmt"></span>
+          <span class="badge playlist" hidden></span>
+          <span class="stats"></span>
+        </div>
+        <div class="bar"><div class="fill"></div></div>
+        <div class="errmsg" hidden></div>
+        <div class="actions"></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+services:
+  video-downloader:
+    build: .
+    container_name: video-downloader
+    # run as your user so downloaded files aren't owned by root
+    user: "${UID:-1000}:${GID:-1000}"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./downloads:/app/downloads
+      - ./data:/app/data
+    environment:
+      - MAX_CONCURRENT=2
+    restart: unless-stopped
+    # If downloads fail with "Temporary failure in name resolution", Docker's
+    # bridge network has no DNS on your host. Comment out `ports:` above and
+    # uncomment the next line to share the host's network instead:
+    # network_mode: host

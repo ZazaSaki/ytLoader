@@ -1,0 +1,36 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# App data: downloaded media and the SQLite queue/history
+downloads/
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# yt-dlp leftovers from interrupted downloads
+*.part
+*.ytdl
+
+# Logs (e.g. from `nohup ./run.sh > app.log`)
+*.log
+
+# Local config / secrets
+.env
+.env.*
+
+# Claude Code per-user settings
+.claude/settings.local.json
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
